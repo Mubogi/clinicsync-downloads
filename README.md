@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.0.3.apk` |
-| Windows PC | `ClinicSync-Setup-1.0.3.exe` |
-| Linux PC (portable) | `ClinicSync-1.0.3.AppImage` |
-| Linux PC (installer) | `clinicsync_1.0.3_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.0.4.apk` |
+| Windows PC | `ClinicSync-Setup-1.0.4.exe` |
+| Linux PC (portable) | `ClinicSync-1.0.4.AppImage` |
+| Linux PC (installer) | `clinicsync_1.0.4_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 
 ## Install notes
@@ -23,8 +23,8 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.0.3.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.3_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.0.4.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.4_amd64.deb`.
 
 ## Server or Client
 
