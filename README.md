@@ -14,6 +14,7 @@ Source code is private; this repo only holds the installers.
 | Linux PC (portable) | `ClinicSync-1.0.4.AppImage` |
 | Linux PC (installer) | `clinicsync_1.0.4_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
+| **Create** activation keys (admin only) | `license-generator.html` (needs the vendor private key) |
 
 ## Install notes
 
