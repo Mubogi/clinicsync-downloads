@@ -9,7 +9,7 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | [`ClinicSync-1.0.6.apk`](https://github.com/Mubogi/clinicsync-downloads/releases/tag/v1.0.6) (1.0.7 coming soon) |
+| Android phone / tablet | `ClinicSync-1.0.7.apk` |
 | Windows PC | `ClinicSync-Setup-1.0.7.exe` |
 | Linux PC (portable) | `ClinicSync-1.0.7.AppImage` |
 | Linux PC (installer) | `clinicsync_1.0.7_amd64.deb` |
