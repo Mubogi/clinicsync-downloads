@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.0.6.apk` |
-| Windows PC | `ClinicSync-Setup-1.0.6.exe` |
-| Linux PC (portable) | `ClinicSync-1.0.6.AppImage` |
-| Linux PC (installer) | `clinicsync_1.0.6_amd64.deb` |
+| Android phone / tablet | [`ClinicSync-1.0.6.apk`](https://github.com/Mubogi/clinicsync-downloads/releases/tag/v1.0.6) (1.0.7 coming soon) |
+| Windows PC | `ClinicSync-Setup-1.0.7.exe` |
+| Linux PC (portable) | `ClinicSync-1.0.7.AppImage` |
+| Linux PC (installer) | `clinicsync_1.0.7_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | **Create** activation keys (admin only) | `license-generator.html` (needs the vendor private key) |
 
@@ -24,8 +24,8 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.0.6.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.6_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.0.7.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.7_amd64.deb`.
 
 ## Server or Client
 
