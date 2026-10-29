@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.0.8.apk` |
-| Windows PC | `ClinicSync-Setup-1.0.8.exe` |
-| Linux PC (portable) | `ClinicSync-1.0.8.AppImage` |
-| Linux PC (installer) | `clinicsync_1.0.8_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.0.9.apk` |
+| Windows PC | `ClinicSync-Setup-1.0.9.exe` |
+| Linux PC (portable) | `ClinicSync-1.0.9.AppImage` |
+| Linux PC (installer) | `clinicsync_1.0.9_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | **Create** activation keys (admin only) | `license-generator.html` (needs the vendor private key) |
 
@@ -24,8 +24,8 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.0.8.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.8_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.0.9.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.9_amd64.deb`.
 
 ## Server or Client
 
@@ -34,12 +34,12 @@ the data and other devices connect to it) or a **Client** (it connects to the
 Server). It remembers the choice.
 
 - **On a phone:** pick **Server** to run everything on that one phone — no PC
-  and no paid hosting. It shows an address like `http://192.168.1.5:41999`;
-  enter that on your other phones and PCs, which must be on the same Wi-Fi.
-  Pick **Client** to connect to another device's server instead.
-- **On a PC:** the Server shows an address like `http://192.168.1.5:5000`;
-  enter that same address on the phones and other PCs, which must be on the
-  same Wi-Fi.
+  and no paid hosting. It shows an address like `http://192.168.1.5:41999`.
+  On your other phones and PCs pick **Client**, then tap **Find servers on
+  this Wi-Fi** and select this one — no need to type the address. They must be
+  on the same Wi-Fi.
+- **On a PC:** the Server shows an address like `http://192.168.1.5:5000`.
+  Clients can tap **Find servers on this Wi-Fi** or type it in.
 
 ## Activation
 
