@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.0.9.apk` |
-| Windows PC | `ClinicSync-Setup-1.0.9.exe` |
-| Linux PC (portable) | `ClinicSync-1.0.9.AppImage` |
-| Linux PC (installer) | `clinicsync_1.0.9_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.0.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.0.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.0.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.0_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 
 Activation keys are issued by JD Hub. The old in-browser key generator is no
@@ -27,8 +27,29 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.0.9.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.9_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.0.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.0_amd64.deb`.
+
+## Upgrading from 1.0.9
+
+Install straight over 1.0.9 — same signing key, so your data and settings are
+kept. 1.1.0 also fixes a first-boot problem where a setup step interrupted
+half-way left the database incomplete and every sign-up and sign-in failed
+afterwards. If you saw that, this update repairs the database on the next
+launch; you do not need to reinstall or start over.
+
+## Activation
+
+Activation keys are issued by JD Hub. First launch shows a **Device ID**. Pay to
+Airtel Money merchant/till **7216334** (name: JD Hub), then WhatsApp the Device
+ID, plan and duration to **+256 754 687 597**. You get back a device-bound
+activation key.
+
+To check a key without installing anything, open `activation.html` in any
+browser — it works offline.
+
+Licensing runs on trust: unactivated copies keep working, so please pay to keep
+ClinicSync maintained and supported.
 
 ## Server or Client
 
@@ -43,15 +64,6 @@ Server). It remembers the choice.
   on the same Wi-Fi.
 - **On a PC:** the Server shows an address like `http://192.168.1.5:5000`.
   Clients can tap **Find servers on this Wi-Fi** or type it in.
-
-## Activation
-
-First launch shows a **Device ID**. Pay to Airtel Money merchant/till **7216334**
-(name: JD Hub), then WhatsApp the Device ID, plan and duration to
-**+256 754 687 597**. You get back a device-bound activation key.
-
-Licensing runs on trust: unactivated copies keep working, so please pay to keep
-ClinicSync maintained and supported.
 
 ## Contact
 
