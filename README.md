@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.0.7.apk` |
-| Windows PC | `ClinicSync-Setup-1.0.7.exe` |
-| Linux PC (portable) | `ClinicSync-1.0.7.AppImage` |
-| Linux PC (installer) | `clinicsync_1.0.7_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.0.8.apk` |
+| Windows PC | `ClinicSync-Setup-1.0.8.exe` |
+| Linux PC (portable) | `ClinicSync-1.0.8.AppImage` |
+| Linux PC (installer) | `clinicsync_1.0.8_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | **Create** activation keys (admin only) | `license-generator.html` (needs the vendor private key) |
 
@@ -24,16 +24,22 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.0.7.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.7_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.0.8.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.0.8_amd64.deb`.
 
 ## Server or Client
 
-On first launch the PC app asks whether this machine is the **Server** (it keeps
+On first launch the app asks whether this machine is the **Server** (it keeps
 the data and other devices connect to it) or a **Client** (it connects to the
-Server). It remembers the choice. The Server shows an address like
-`http://192.168.1.5:5000` — enter that same address on the phones and other
-PCs, which must be on the same Wi-Fi.
+Server). It remembers the choice.
+
+- **On a phone:** pick **Server** to run everything on that one phone — no PC
+  and no paid hosting. It shows an address like `http://192.168.1.5:41999`;
+  enter that on your other phones and PCs, which must be on the same Wi-Fi.
+  Pick **Client** to connect to another device's server instead.
+- **On a PC:** the Server shows an address like `http://192.168.1.5:5000`;
+  enter that same address on the phones and other PCs, which must be on the
+  same Wi-Fi.
 
 ## Activation
 
