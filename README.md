@@ -14,7 +14,10 @@ Source code is private; this repo only holds the installers.
 | Linux PC (portable) | `ClinicSync-1.0.9.AppImage` |
 | Linux PC (installer) | `clinicsync_1.0.9_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
-| **Create** activation keys (admin only) | `license-generator.html` (needs the vendor private key) |
+
+Activation keys are issued by JD Hub. The old in-browser key generator is no
+longer distributed: it was a vendor tool and had no place in a customer's
+download folder.
 
 ## Install notes
 
