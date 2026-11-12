@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.1.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.1.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.1.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.1_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.2.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.2.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.2.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.2_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 
 Activation keys are issued by JD Hub. The old in-browser key generator is no
@@ -27,15 +27,19 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.1.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.1_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.2.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.2_amd64.deb`.
 
-## Upgrading from 1.1.0
+## What's new in 1.1.2
 
-Install straight over 1.1.0 — same signing key, so your data and settings are
-kept. 1.1.1 fixes the phone-as-server first-run dead end: a fresh Android
-Server no longer jumps to the activation screen asking for an owner sign-in
-that cannot exist yet. It now creates the owner account first, then activates.
-It also makes a Server run fully standalone with Wi-Fi off, with periodic sync
-deferred until there is a network.
+- **Sell by strip, tablet or box.** Pick the unit at the till and each unit
+  carries its own price. Selling single tablets now works.
+- **Stock shows its breakdown** — pack sizes and unit-by-unit counts.
+- **Who bought what** — sales record a customer name and phone, and Reports has
+  a per-customer view plus printable report sheets.
+- **Invite QR works offline** — the staff-invite code is drawn on the device.
 
+## Upgrading
+
+Install straight over any 1.0.7 or later build — same signing key, so your data
+and settings are kept.
