@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.3.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.3.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.3.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.3_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.4.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.4.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.4.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.4_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 
 Activation keys are issued by JD Hub. The old in-browser key generator is no
@@ -27,8 +27,23 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.3.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.3_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.4.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.4_amd64.deb`.
+
+## What's new in 1.1.4
+
+- **Fixed: creating your clinic offline.** On a phone or PC, "create your clinic
+  (free trial)" could fail permanently with "Something went wrong. Please try
+  again." A crash or force-stop during a write left the database's lock file
+  behind, after which the app could never open its own database again — so no
+  account could be created and the app was unusable. The app now clears a
+  leftover lock from a previous crash on start-up. Your data is kept.
+
+Everything from 1.1.3 is included:
+
+- **Fixed: creating your clinic after an upgrade.** On a device that already had
+  an older version installed, the app now repairs its offline database on
+  start-up, so an upgrade keeps working and keeps your data.
 
 ## What's new in 1.1.3
 
