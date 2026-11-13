@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.4.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.4.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.4.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.4_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.5.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.5.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.5.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.5_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 
 Activation keys are issued by JD Hub. The old in-browser key generator is no
@@ -27,10 +27,22 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.4.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.4_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.5.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.5_amd64.deb`.
 
-## What's new in 1.1.4
+## What's new in 1.1.5
+
+- **Fixed: creating your clinic when the database is unreadable.** 1.1.4 healed a
+  leftover lock file, but a crash or force-stop during a write can leave the
+  embedded database in a worse state: the bytes on disk are no longer a valid
+  database at all, so the app never finished starting and every screen — including
+  "create your clinic (free trial)" — failed with "Something went wrong. Please
+  try again." The app now sets that unreadable file aside as
+  `clinicsync.db.corrupt-<timestamp>` (kept, never deleted) and builds a fresh
+  database, so a new owner can create their clinic and get in. This rebuild
+  carries the fix to **both** the phone and the PC builds.
+
+Everything from 1.1.4 is included:
 
 - **Fixed: creating your clinic offline.** On a phone or PC, "create your clinic
   (free trial)" could fail permanently with "Something went wrong. Please try
