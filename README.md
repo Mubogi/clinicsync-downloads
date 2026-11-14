@@ -9,11 +9,14 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.6.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.6.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.6.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.6_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.7.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.7.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.7.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.7_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
+| Marketing kit (videos, posters, documents) | `ClinicSync-Marketing-Kit.zip` |
+
+Every file has a SHA-256 checksum in `SHA256SUMS.txt`.
 
 Activation keys are issued by JD Hub. The old in-browser key generator is no
 longer distributed: it was a vendor tool and had no place in a customer's
@@ -27,27 +30,30 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.6.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.6_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.7.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.7_amd64.deb`.
 
-## What's new in 1.1.6
+## What's new in 1.1.7
 
-- **Fixed: "Something went wrong" when creating your clinic or signing in, when
-  the database has a damaged page.** 1.1.5 rescued a database whose *header* was
-  unreadable, but a crash or force-stop can instead damage a single *data* page.
-  The file then still opens and the app starts, so the fault only showed up later
-  — on the first real action (registration, the dashboard, a sale) — as the same
-  generic **"Something went wrong. Please try again."** with no way past it. The
-  app now checks the whole database on start-up, and if it is damaged it sets the
-  file aside as `clinicsync.db.corrupt-<timestamp>` (kept, never deleted) and
-  builds a fresh one, so you can create your clinic and get in. This rebuild
-  carries the fix to **both** the phone and the PC builds.
+- **Fixed: "Something went wrong" when creating your clinic or signing in, after
+  a force-stop.** 1.1.6 healed a database with a damaged *data page*, but the
+  check only looked inside the pages it could read. A force-stop can instead
+  leave the file a different length from what its header describes — the last
+  page written only partly, or a page from an interrupted commit appended after
+  the last durable one. The file could still pass the page check and open
+  normally, so the fault only appeared later, on the first real action
+  (registration, the dashboard, a sale), as the same generic **"Something went
+  wrong. Please try again."** with no way past it. The app now also compares the
+  file size against the header's page count times the page size on start-up. If
+  they disagree it sets the file aside as `clinicsync.db.corrupt-<timestamp>`
+  (kept, never deleted) and builds a fresh one, so you can create your clinic and
+  get in. This rebuild carries the fix to **both** the phone and the PC builds.
 
-Everything from 1.1.5 is included:
+Everything from 1.1.6 is included:
 
-- **Fixed: creating your clinic when the database is unreadable.** The app sets an
-  unreadable file aside (kept as `clinicsync.db.corrupt-<timestamp>`) and builds a
-  fresh database, so a new owner can create their clinic and get in.
+- **Fixed: a damaged data page.** The app checks the whole database on start-up,
+  and if any page is damaged it sets the file aside
+  (kept as `clinicsync.db.corrupt-<timestamp>`) and builds a fresh one.
 
 Everything from 1.1.4 is included:
 
