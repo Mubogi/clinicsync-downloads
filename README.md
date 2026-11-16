@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.7.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.7.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.7.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.7_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.8.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.8.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.8.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.8_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | Marketing kit (videos, posters, documents) | `ClinicSync-Marketing-Kit.zip` |
 
@@ -30,24 +30,38 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.7.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.7_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.8.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.8_amd64.deb`.
 
-## What's new in 1.1.7
+## What's new in 1.1.8
+
+- **Fixed: a healthy database could be set aside.** 1.1.7 compared the file's
+  real size against the size its header describes, and set the file aside when
+  the two disagreed. But a database *longer* than its header describes is
+  perfectly normal and healthy — SQLite simply ignores the extra bytes — so a
+  shop that had such a file saw its data quarantined on start-up. The check now
+  treats only a file that is **shorter** than its header describes as damage; a
+  longer file is left exactly where it is. Your data stays put.
+- **Fixed: a production offline build could run without its licence key.** A
+  phone or desktop build packaged without the vendor public key used to fall back
+  to a throw-away in-memory key, which silently switched licence checking off.
+  Such a build now refuses to start, so a mis-packaged installer fails at the
+  factory instead of running unlicensed in the field.
+
+Everything from 1.1.7 is included:
 
 - **Fixed: "Something went wrong" when creating your clinic or signing in, after
-  a force-stop.** 1.1.6 healed a database with a damaged *data page*, but the
-  check only looked inside the pages it could read. A force-stop can instead
-  leave the file a different length from what its header describes — the last
-  page written only partly, or a page from an interrupted commit appended after
-  the last durable one. The file could still pass the page check and open
-  normally, so the fault only appeared later, on the first real action
-  (registration, the dashboard, a sale), as the same generic **"Something went
-  wrong. Please try again."** with no way past it. The app now also compares the
-  file size against the header's page count times the page size on start-up. If
-  they disagree it sets the file aside as `clinicsync.db.corrupt-<timestamp>`
-  (kept, never deleted) and builds a fresh one, so you can create your clinic and
-  get in. This rebuild carries the fix to **both** the phone and the PC builds.
+  a force-stop.** A force-stop can leave the file a different length from what
+  its header describes — the last page written only partly, or a page from an
+  interrupted commit appended after the last durable one. The file could still
+  pass the page check and open normally, so the fault only appeared later, on the
+  first real action (registration, the dashboard, a sale), as the same generic
+  **"Something went wrong. Please try again."** with no way past it. The app now
+  also compares the file size against the header's page count times the page size
+  on start-up. If they disagree it sets the file aside as
+  `clinicsync.db.corrupt-<timestamp>` (kept, never deleted) and builds a fresh
+  one, so you can create your clinic and get in. This rebuild carries the fix to
+  **both** the phone and the PC builds.
 
 Everything from 1.1.6 is included:
 
