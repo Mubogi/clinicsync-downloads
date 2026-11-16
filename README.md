@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.9.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.9.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.9.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.9_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.10.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.10.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.10.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.10_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | Marketing kit (videos, posters, documents) | `ClinicSync-Marketing-Kit.zip` |
 
@@ -30,8 +30,42 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.9.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.9_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.10.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.10_amd64.deb`.
+
+## What's new in 1.1.10
+
+- **Fixed: the phone could still fail after a fresh install.** 1.1.9 checked the
+  database for write damage only when a database already existed, so a brand-new
+  install skipped the check. A force-stop can leave the app in exactly the state
+  that check was meant to catch — a database it can open for reads but not write.
+  It boots, the login screen looks fine, and then your first "create clinic"
+  fails with the generic **"Something went wrong. Please try again."** The check
+  now runs on every start-up, a fresh install included.
+
+- **Fixed: reinstalling the app brought the old data back.** Android was backing
+  up the app's private folder, so after an uninstall and reinstall the previous
+  database — damage and all — came straight back. That is why reinstalling never
+  cleared the error. The app now opts out of Android backup and device-to-device
+  transfer, so a fresh install really starts clean.
+
+- **Fixed: an upgrade could refuse to start.** Repairing an older database's
+  missing columns rewrote `DEFAULT CURRENT_TIMESTAMP` into an invalid
+  `DEFAULT NOT NULLSTAMP`, so an app upgrading from an older build could fail to
+  boot with a syntax error. The rewrite is corrected.
+
+- **Fixed: a request the phone mangled now gets a clear answer.** A request body
+  the phone's native HTTP bridge mis-serialised used to fall through to the same
+  generic "Something went wrong" 500. It now returns a 400 that says the request
+  could not be read.
+
+- The app's health check now reports the running build, so support can confirm
+  exactly which version a device is on.
+
+Everything from 1.1.9 and earlier is included: a database that can be read but
+not written is repaired at start-up, a healthy database is never set aside, a
+damaged data page is set aside, and a mis-packaged build without its licence key
+refuses to start.
 
 ## What's new in 1.1.9
 
