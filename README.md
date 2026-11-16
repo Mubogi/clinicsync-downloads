@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.8.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.8.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.8.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.8_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.9.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.9.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.9.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.9_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | Marketing kit (videos, posters, documents) | `ClinicSync-Marketing-Kit.zip` |
 
@@ -30,8 +30,26 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.8.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.8_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.9.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.9_amd64.deb`.
+
+## What's new in 1.1.9
+
+- **Fixed: creating your clinic or signing in on a phone could fail for good.**
+  After a force-stop, the app could still open its database for reads but reject
+  every write. Boot, health checks and the login screen all looked fine, and then
+  the owner's first real action — creating the clinic, opening the dashboard, a
+  sale — failed with the generic **"Something went wrong. Please try again."**
+  The cause was debris a force-stop leaves beside the database: a
+  `<db>-journal` / `<db>-wal` / `<db>-shm` path that is a **directory** rather
+  than a file, or a stray `-wal` this rollback-journal build never writes. SQLite
+  cannot replace a directory, so every write failed. The desktop build usually
+  escaped it because it is quit cleanly, which is why the same code looked fixed
+  on PC but kept failing on the phone. The app now probes a real write at
+  start-up; if the write is blocked it clears the sidecar debris and retries
+  once, and it fails loudly when the cause is something else (a read-only folder,
+  a full disk) instead of booting into an error. This rebuild carries the fix to
+  **both** the phone and the PC builds.
 
 ## What's new in 1.1.8
 
