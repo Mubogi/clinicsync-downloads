@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.10.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.10.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.10.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.10_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.11.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.11.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.11.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.11_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | Marketing kit (videos, posters, documents) | `ClinicSync-Marketing-Kit.zip` |
 
@@ -30,8 +30,33 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.10.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.10_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.11.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.11_amd64.deb`.
+
+## What's new in 1.1.11
+
+- **Fixed: the phone's "Something went wrong" when you create your clinic.** This
+  is the one that kept coming back on the phone while the PC worked. The offline
+  database locks itself for writing by creating a small lock file and removes it
+  when it finishes — but on Android that removal can fail (a force-stop, or the
+  way Android stores app files), and then the lock survives. The database still
+  opens for reading, so the app looks healthy, and then your first real action —
+  **create your clinic** — hits that leftover lock and fails with the generic
+  message. Desktop never hit it because it always cleaned up properly. The app
+  now clears a stale lock automatically before it writes, so your first action
+  succeeds. Nothing to do on your phone.
+
+- **Fixed: the phone now tells you the real error.** When something does fail on
+  the device itself, the app returns the actual message and error code instead of
+  the generic sentence, so a problem is diagnosable instead of hidden.
+
+- The app's health check reports the running build (1.1.11), so support can
+  confirm which version a phone is on with one request.
+
+Everything from 1.1.10 and earlier is included: a database that can be read but
+not written is repaired at start-up (a fresh install included), a healthy
+database is never set aside, the app opts out of Android backup so a reinstall
+really starts clean, and a damaged data page is set aside and kept.
 
 ## What's new in 1.1.10
 
