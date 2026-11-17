@@ -25,8 +25,24 @@ download folder.
 ## Install notes
 
 **Android.** Tap the `.apk`, then allow "Install unknown apps" for your browser
-or file manager if Android asks. If you see "Error parsing package", you
-downloaded the wrong file — use the release link above, not the source repo.
+or file manager if Android asks.
+
+If Android refuses to install, the message tells you what to do:
+
+- **"Error parsing package"** — you downloaded the wrong file. Use the release
+  link above, not the source repo, and let the download finish completely.
+- **"App not installed" / "Application is invalid"** — the APK itself is fine
+  (check its SHA-256 against `SHA256SUMS.txt`). This nearly always means an
+  older ClinicSync signed with a **different key** is still installed, or a
+  half-finished download is being installed. Fix:
+  1. Uninstall ClinicSync (Settings → Apps → ClinicSync → Uninstall).
+  2. Re-download the APK from the release link above and confirm its SHA-256.
+  3. Install the fresh download. Free up storage first if Android reports low
+     space.
+
+  A key change only happened once, in **1.0.7** — every build from 1.0.7
+  onward shares one signing key, so once you are on 1.0.7+ future updates
+  install straight over the old app and keep your data.
 
 **Windows.** Run the `.exe` installer.
 
