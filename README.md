@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.11.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.11.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.11.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.11_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.1.12.apk` |
+| Windows PC | `ClinicSync-Setup-1.1.12.exe` |
+| Linux PC (portable) | `ClinicSync-1.1.12.AppImage` |
+| Linux PC (installer) | `clinicsync_1.1.12_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | Marketing kit (videos, posters, documents) | `ClinicSync-Marketing-Kit.zip` |
 
@@ -30,33 +30,36 @@ downloaded the wrong file — use the release link above, not the source repo.
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.11.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.11_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.1.12.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.12_amd64.deb`.
 
-## What's new in 1.1.11
+## What's new in 1.1.12
 
-- **Fixed: the phone's "Something went wrong" when you create your clinic.** This
-  is the one that kept coming back on the phone while the PC worked. The offline
-  database locks itself for writing by creating a small lock file and removes it
-  when it finishes — but on Android that removal can fail (a force-stop, or the
-  way Android stores app files), and then the lock survives. The database still
-  opens for reading, so the app looks healthy, and then your first real action —
-  **create your clinic** — hits that leftover lock and fails with the generic
-  message. Desktop never hit it because it always cleaned up properly. The app
-  now clears a stale lock automatically before it writes, so your first action
-  succeeds. Nothing to do on your phone.
+- **Fixed: the phone's "Something went wrong" when you create your clinic —
+  the real cause this time.** 1.1.11 made the app report the true error instead
+  of the generic sentence, and the phone reported:
 
-- **Fixed: the phone now tells you the real error.** When something does fail on
-  the device itself, the app returns the actual message and error code instead of
-  the generic sentence, so a problem is diagnosable instead of hidden.
+  `"fatal" option is not supported in node js compiled without icu (ERR_NO_ICU)`
 
-- The app's health check reports the running build (1.1.11), so support can
+  The database client the app uses asks the phone's JavaScript engine for
+  strict UTF-8 decoding when it starts. The engine built into the Android app
+  is a compact one **without** the international text (ICU) component, so it
+  refuses that request — and the database client then fails to start at all, so
+  **every** action on the phone fails, including creating your clinic. The PC
+  was never affected because the engine it ships includes ICU. This build
+  teaches the app to work without ICU, so the phone starts the database
+  normally. Nothing to do on your phone.
+
+- The app's health check reports the running build (1.1.12), so support can
   confirm which version a phone is on with one request.
 
-Everything from 1.1.10 and earlier is included: a database that can be read but
-not written is repaired at start-up (a fresh install included), a healthy
-database is never set aside, the app opts out of Android backup so a reinstall
-really starts clean, and a damaged data page is set aside and kept.
+Everything from 1.1.11 and earlier is included: a stale lock left by a
+force-stop is cleared automatically before a write, and when something fails on
+the device itself the app returns the real message instead of the generic
+sentence. Older fixes remain too: a database that can be read but not written is
+repaired at start-up (a fresh install included), a healthy database is never set
+aside, the app opts out of Android backup so a reinstall really starts clean, and
+a damaged data page is set aside and kept.
 
 ## What's new in 1.1.10
 
