@@ -9,10 +9,10 @@ Source code is private; this repo only holds the installers.
 
 | Your device | File to download |
 | --- | --- |
-| Android phone / tablet | `ClinicSync-1.1.12.apk` |
-| Windows PC | `ClinicSync-Setup-1.1.12.exe` |
-| Linux PC (portable) | `ClinicSync-1.1.12.AppImage` |
-| Linux PC (installer) | `clinicsync_1.1.12_amd64.deb` |
+| Android phone / tablet | `ClinicSync-1.2.0.apk` |
+| Windows PC | `ClinicSync-Setup-1.2.0.exe` |
+| Linux PC (portable) | `ClinicSync-1.2.0.AppImage` |
+| Linux PC (installer) | `clinicsync_1.2.0_amd64.deb` |
 | Check an activation key | `activation.html` (opens offline in any browser) |
 | Marketing kit (videos, posters, documents) | `ClinicSync-Marketing-Kit.zip` |
 
@@ -46,8 +46,38 @@ If Android refuses to install, the message tells you what to do:
 
 **Windows.** Run the `.exe` installer.
 
-**Linux.** AppImage: `chmod +x ClinicSync-1.1.12.AppImage` then run it.
-Debian/Ubuntu: `sudo apt install ./clinicsync_1.1.12_amd64.deb`.
+**Linux.** AppImage: `chmod +x ClinicSync-1.2.0.AppImage` then run it.
+Debian/Ubuntu: `sudo apt install ./clinicsync_1.2.0_amd64.deb`.
+
+## What's new in 1.2.0
+
+- **Reports are now real PDFs.** Every report tab (overview, inventory, sales,
+  customers, analytics) and the end-of-day balance sheet export a branded PDF
+  carrying your clinic logo and colours. On a phone the PDF opens the native
+  **Share** sheet (WhatsApp, Files, email); on a PC it downloads. Printing
+  inside the phone app used to do nothing — that is fixed.
+
+- **Send a payment proof on WhatsApp straight from the till.** After a sale,
+  one tap sends the receipt to the owner's WhatsApp for **every** payment type,
+  not just mobile money. Mobile-money sales also record the **transaction ID**
+  and the **number that paid**, so the owner can match a payment against the
+  network statement. Billing pre-fills the same hand-off.
+
+- **End-of-day in one step.** Locking the books at close now takes a snapshot
+  automatically and exports the balance-sheet PDF, so the day's close is a
+  single action.
+
+- **Tables built for a phone.** Reports, Settings, Expenses and Inventory show
+  labelled cards on a phone and a proper table on a PC, so nothing is squeezed
+  off-screen. Printed sheets keep the table.
+
+- **Your clinic logo.** Upload it once in Settings; it appears in the sidebar,
+  on receipts and in every generated PDF. The image is shrunk on the device and
+  never uploaded anywhere.
+
+Also in this release: the app opens faster (reports load on demand, launch
+bundle roughly halved) and mobile-money sales gain the proof fields described
+above.
 
 ## What's new in 1.1.12
 
